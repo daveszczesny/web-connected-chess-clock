@@ -25,3 +25,7 @@ An arduino based Chess Clock that allows for web based configuration
 - api:/arduino/display/preset/{ID}/delete [DELETE]
 <br>Deletes an existing preset
 
+
+# To Upload an image to Cloud Run
+`gcloud builds submit --tag gcr.io/PROJECT_ID/helloworld`
+`gcloud run deploy --image gcr.io/PROJECT_ID/helloworld`
