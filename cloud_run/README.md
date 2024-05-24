@@ -1,7 +1,3 @@
-# The Web Connected Chess Clock
-An arduino based Chess Clock that allows for web based configuration
-
-
 # API Endpoints Explorer
 
 - api:/timecontrol/preset [GET]
@@ -27,5 +23,5 @@ An arduino based Chess Clock that allows for web based configuration
 
 
 # To Upload an image to Cloud Run
-`gcloud builds submit --tag gcr.io/PROJECT_ID/helloworld`
+`gcloud builds submit --tag gcr.io/PROJECT_ID/helloworld`<br>
 `gcloud run deploy --image gcr.io/PROJECT_ID/helloworld`

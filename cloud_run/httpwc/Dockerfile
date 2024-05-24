@@ -14,11 +14,12 @@ COPY go.* ./
 RUN go mod download
 
 # Copy local code to the container image.
-COPY . ./
+COPY ./cmd/httpwc ./cmd/httpwc
+COPY ./internal ./internal
 
 # Build the binary.
 # -mod=readonly ensures immutable go.mod and go.sum in container builds.
-RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -mod=readonly -v -o server
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -mod=readonly -v -o server ./cmd/httpwc
 
 # Use the official Alpine image for a lean production container.
 # https://hub.docker.com/_/alpine
