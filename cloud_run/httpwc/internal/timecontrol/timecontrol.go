@@ -104,6 +104,12 @@ func addCollection(ctx context.Context, client *firestore.Client, collection str
 		return
 	}
 
+	// Validating values
+	if doc.GameLengthInMilliseconds <= 0 || doc.IncrementInMilliseconds < 0 {
+		http.Error(w, "Invalid values in payload", http.StatusBadRequest)
+		return
+	}
+
 	_, _, err = client.Collection(collection).Add(ctx, map[string]interface{}{
 		"game_length_ms": doc.GameLengthInMilliseconds,
 		"increment_ms":   doc.IncrementInMilliseconds,
