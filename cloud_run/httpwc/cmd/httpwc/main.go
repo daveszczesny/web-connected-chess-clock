@@ -7,6 +7,7 @@ import (
 	"os"
 
 	firebase "firebase.google.com/go"
+	"github.com/daveszczesny/web-connected-chess-clock/internal/esp"
 	"github.com/daveszczesny/web-connected-chess-clock/internal/timecontrol"
 )
 
@@ -30,6 +31,7 @@ func main() {
 	}
 
 	http.HandleFunc("/timecontrol", timecontrol.HandleCollection(ctx, client, "time-control"))
+	http.HandleFunc("/esp", esp.HandleCollection(ctx, client, "esp-settings"))
 
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal("Could not listen")
